@@ -126,7 +126,7 @@ public class MainViewModel : BaseViewModel
             "Дневник" => new DiaryViewModel(SelectedProfile!, _entryService),
             "База продуктов" => new FoodDatabaseViewModel(_productService),
             "Статистика" => new StatisticsViewModel(SelectedProfile!, _entryService, _statisticsService),
-            "Настройки" => new SettingsViewModel(SelectedProfile!, _settingsService, _entryService, _productService, _csvExportService),
+            "Настройки" => new SettingsViewModel(SelectedProfile!, _settingsService, _profileService, _entryService, _productService, _csvExportService),
             _ => CurrentViewModel!
         };
     }

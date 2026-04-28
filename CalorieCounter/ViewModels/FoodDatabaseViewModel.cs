@@ -19,7 +19,11 @@ public class FoodDatabaseViewModel : BaseViewModel
         EditableProduct = new FoodProduct();
 
         SearchCommand = new RelayCommand(_ => Load());
-        NewCommand = new RelayCommand(_ => EditableProduct = new FoodProduct { Category = "Другое", IsUserCreated = true });
+        NewCommand = new RelayCommand(_ =>
+        {
+            EditableProduct = new FoodProduct { Category = "Другое", IsUserCreated = true };
+            RaisePropertyChanged(nameof(EditableProduct));
+        });
         SaveCommand = new RelayCommand(_ => Save());
         DeleteCommand = new RelayCommand(_ => Delete(), _ => SelectedProduct is not null);
 
@@ -49,6 +53,7 @@ public class FoodDatabaseViewModel : BaseViewModel
                     CarbsPer100g = value.CarbsPer100g,
                     IsUserCreated = value.IsUserCreated
                 };
+                RaisePropertyChanged(nameof(EditableProduct));
             }
         }
     }

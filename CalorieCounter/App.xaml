@@ -4,13 +4,11 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
-            <Color x:Key="BgColor">#1B1C22</Color>
-            <Color x:Key="PanelColor">#2A2C35</Color>
-            <Color x:Key="AccentColor">#4CC9F0</Color>
-            <SolidColorBrush x:Key="BgBrush" Color="{StaticResource BgColor}"/>
-            <SolidColorBrush x:Key="PanelBrush" Color="{StaticResource PanelColor}"/>
-            <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource AccentColor}"/>
+            <SolidColorBrush x:Key="BgBrush" Color="#1B1C22"/>
+            <SolidColorBrush x:Key="PanelBrush" Color="#2A2C35"/>
+            <SolidColorBrush x:Key="AccentBrush" Color="#4CC9F0"/>
             <SolidColorBrush x:Key="ForegroundBrush" Color="#F2F2F2"/>
+            <SolidColorBrush x:Key="InputBgBrush" Color="#31333E"/>
 
             <Style TargetType="Window">
                 <Setter Property="Background" Value="{StaticResource BgBrush}"/>
@@ -26,10 +24,14 @@
             <Style TargetType="TextBox">
                 <Setter Property="Margin" Value="4"/>
                 <Setter Property="Padding" Value="6"/>
+                <Setter Property="Background" Value="{StaticResource InputBgBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
             </Style>
             <Style TargetType="ComboBox">
                 <Setter Property="Margin" Value="4"/>
                 <Setter Property="Padding" Value="4"/>
+                <Setter Property="Background" Value="{StaticResource InputBgBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
             </Style>
         </ResourceDictionary>
     </Application.Resources>

@@ -10,14 +10,16 @@ public class SettingsViewModel : BaseViewModel
 {
     private readonly UserProfile _profile;
     private readonly SettingsService _settingsService;
+    private readonly ProfileService _profileService;
     private readonly FoodEntryService _entryService;
     private readonly FoodProductService _productService;
     private readonly CsvExportService _csvExportService;
 
-    public SettingsViewModel(UserProfile profile, SettingsService settingsService, FoodEntryService entryService, FoodProductService productService, CsvExportService csvExportService)
+    public SettingsViewModel(UserProfile profile, SettingsService settingsService, ProfileService profileService, FoodEntryService entryService, FoodProductService productService, CsvExportService csvExportService)
     {
         _profile = profile;
         _settingsService = settingsService;
+        _profileService = profileService;
         _entryService = entryService;
         _productService = productService;
         _csvExportService = csvExportService;
@@ -52,11 +54,16 @@ public class SettingsViewModel : BaseViewModel
         }
 
         _profile.DailyCaloriesGoal = CaloriesGoal;
+        _profileService.Update(_profile);
         var settings = _settingsService.Get();
         settings.Theme = SelectedTheme;
         _settingsService.Save(settings);
+        if (Application.Current is App app)
+        {
+            app.ApplyTheme(SelectedTheme);
+        }
 
-        MessageBox.Show("Настройки сохранены. Перезапустите приложение для полного применения темы.", "Готово", MessageBoxButton.OK, MessageBoxImage.Information);
+        MessageBox.Show("Настройки сохранены.", "Готово", MessageBoxButton.OK, MessageBoxImage.Information);
     }
 
     private void Export()
