@@ -1,0 +1,21 @@
+<UserControl x:Class="CalorieCounter.Views.StatisticsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid>
+        <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+        <StackPanel Margin="4">
+            <TextBlock Text="Калории за 7 дней" FontWeight="Bold" FontSize="18"/>
+            <ListBox ItemsSource="{Binding Last7DaysCalories}" Height="180"/>
+            <TextBlock Text="Калории за 30 дней" FontWeight="Bold" FontSize="18" Margin="0,12,0,0"/>
+            <ListBox ItemsSource="{Binding Last30DaysCalories}" Height="220"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Margin="10">
+            <TextBlock Text="Показатели" FontSize="22" FontWeight="Bold"/>
+            <TextBlock Text="{Binding AverageCalories, StringFormat='Среднее ккал/день: {0:0.0}'}" Margin="0,8"/>
+            <TextBlock Text="{Binding OverGoalDays, StringFormat='Дней с превышением: {0}'}" Margin="0,8"/>
+            <TextBlock Text="{Binding UnderGoalDays, StringFormat='Дней с недобором: {0}'}" Margin="0,8"/>
+            <TextBlock Text="{Binding MostFrequentProduct, StringFormat='Частый продукт: {0}'}" Margin="0,8"/>
+            <TextBlock Text="{Binding MostCalorieDay, StringFormat='Самый калорийный день: {0}'}" Margin="0,8"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
