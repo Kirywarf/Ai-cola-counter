@@ -1,0 +1,22 @@
+<Window x:Class="CalorieCounter.Views.ProfileEditView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Профиль" Height="620" Width="520" WindowStartupLocation="CenterOwner">
+    <ScrollViewer>
+        <StackPanel Margin="16">
+            <TextBlock Text="Имя"/><TextBox Text="{Binding Profile.Name, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Text="Возраст"/><TextBox Text="{Binding Profile.Age}"/>
+            <TextBlock Text="Рост (см)"/><TextBox Text="{Binding Profile.Height}"/>
+            <TextBlock Text="Вес (кг)"/><TextBox Text="{Binding Profile.Weight}"/>
+            <TextBlock Text="Пол"/><ComboBox ItemsSource="{Binding GenderOptions}" SelectedItem="{Binding Profile.Gender}"/>
+            <TextBlock Text="Цель"/><ComboBox ItemsSource="{Binding GoalOptions}" SelectedItem="{Binding Profile.Goal}"/>
+            <TextBlock Text="Активность"/><ComboBox ItemsSource="{Binding ActivityOptions}" SelectedItem="{Binding Profile.ActivityLevel}"/>
+            <Button Content="Рассчитать норму" Command="{Binding RecalculateCommand}" Margin="4,10"/>
+            <TextBlock Text="Калории"/><TextBox Text="{Binding Profile.DailyCaloriesGoal}"/>
+            <TextBlock Text="Белки"/><TextBox Text="{Binding Profile.DailyProteinGoal}"/>
+            <TextBlock Text="Жиры"/><TextBox Text="{Binding Profile.DailyFatGoal}"/>
+            <TextBlock Text="Углеводы"/><TextBox Text="{Binding Profile.DailyCarbsGoal}"/>
+            <Button Content="Сохранить" Command="{Binding SaveCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" Margin="4,10"/>
+        </StackPanel>
+    </ScrollViewer>
+</Window>

@@ -1,0 +1,15 @@
+<UserControl x:Class="CalorieCounter.Views.SettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <StackPanel>
+        <TextBlock Text="Настройки" FontSize="24" FontWeight="Bold" Margin="0,0,0,8"/>
+        <TextBlock Text="Тема"/><ComboBox ItemsSource="{Binding ThemeOptions}" SelectedItem="{Binding SelectedTheme}" Width="180"/>
+        <TextBlock Text="Дневная норма калорий"/><TextBox Text="{Binding CaloriesGoal}" Width="180"/>
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Сохранить настройки" Command="{Binding SaveSettingsCommand}"/>
+            <Button Content="Экспорт в CSV" Command="{Binding ExportCommand}"/>
+            <Button Content="Очистить дневник" Command="{Binding ClearDiaryCommand}"/>
+            <Button Content="Очистить базу пользовательских продуктов" Command="{Binding ClearUserProductsCommand}"/>
+        </StackPanel>
+    </StackPanel>
+</UserControl>
